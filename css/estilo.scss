@@ -1,9 +1,6 @@
 /*variables*/
 $color_dark_blue: rgb(4, 4, 88);
-
-
 $color_white: white;
-
 $color_black: black;
 
 $verde_tono: (
@@ -21,6 +18,7 @@ $verde_tono: (
     font-size: 20px; 
     
 }
+
 .nav-tabs{
     margin:0;
     padding:0;
@@ -98,6 +96,7 @@ $verde_tono: (
 .container-fluid{
     padding:0;
 }
+
 .jumbotron {
     background-color: $color_dark_blue;
     color:white;
@@ -117,9 +116,8 @@ $verde_tono: (
     }
   }
   
-
 /* Tarjetas en contenedor */
-  .flexContainer{
+.flexContainer{
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
@@ -132,20 +130,29 @@ $verde_tono: (
     background-color: $color_dark_blue;
     gap:1%;
 }
+
 .card-body{
     margin-bottom: 10px;
     padding-bottom: 10px;
     color: map-get($verde_tono,oscuro);
 }
+
 .card{
     border: 3px solid $color_dark_blue;
     margin-bottom:10px;
     padding-top: 20px; 
+}
+
+@mixin perimetro_hover($scale,$transition,$color_verde_tono){
     &:hover{
-        transform: scale(1.03);
-        transition: all 0.7s;
-        border-color: map-get($verde_tono,normal);
+    transform: scale($scale);
+    transition: $transition;
+    border-color: map-get($verde_tono,$color_verde_tono);
     }
+}
+
+.card{
+    @include perimetro_hover(1.03,all 1s,normal);
 }
 
 .btn{
@@ -164,16 +171,27 @@ $verde_tono: (
 .formulario{
     color:white;
     background-color: $color_dark_blue;
-    padding-top:5%;
-    padding-bottom:5%;
+    /*padding-top:5%;*/
+    padding-bottom:2%;
     padding-left:20%;
-    padding-right:20%;
-    
+    padding-right:20%;  
 }
 
-.titulo_personal {
+.titulos_pagina_contacto {
     text-align: center;
     color: map-get($verde_tono,claro);
+}
+
+.titulo_formulario{
+    @extend .titulos_pagina_contacto;
+    padding-top:15px;
+    padding-bottom:10px;
+    background-color: $color_dark_blue;
+ }
+
+.titulo_mapa{
+   @extend .titulos_pagina_contacto;
+   padding-bottom:10px;
 }
 
 .mapa_oficina{
@@ -183,7 +201,6 @@ $verde_tono: (
     align-content: center;
     background-color: $color_dark_blue;
 }
-
 
 /* Footer */
 .page-footer{
